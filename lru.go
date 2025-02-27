@@ -72,9 +72,9 @@ func (l *Lru) addNode(node *LruNode) {
 }
 
 func (l *Lru) show() {
-	defer l.mutex.Unlock()
-	l.mutex.Lock()
-	fmt.Println("show data:")
+    defer l.mutex.Unlock()
+    l.mutex.Lock()
+    fmt.Println("show data:")
     for _, value := range l.d {
         fmt.Printf("%v ", value)
     }
