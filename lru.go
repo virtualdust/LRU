@@ -6,8 +6,8 @@ import (
 )
 
 type LruNode struct {
-    Id    interface{}
-    Value interface{}
+	Id    interface{}
+	Value interface{}
 }
 
 type Lru struct {
@@ -93,9 +93,9 @@ func main() {
 	lru.put(&LruNode{ Id: "c", Value: "c"})
 	lru.put(&LruNode{ Id: "d", Value: "d"})
 	lru.put(&LruNode{ Id: "e", Value: "e"})
-    lru.show()
+    	lru.show()
 	lru.get("b")
-    lru.show()
+    	lru.show()
 	lru.put(&LruNode{ Id: "f", Value: "f"})
 	lru.show()
 }
