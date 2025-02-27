@@ -29,7 +29,7 @@ func newLru(cap int) *Lru {
 func (l *Lru) get(id string) interface{} {
     index, ok := l.m[id]	
     if !ok {
-        fmt.Printf("no Value in lru, id: %s\n", id)
+        fmt.Printf("no Value in lru, id: %s \n", id)
         return nil 
     }
 
