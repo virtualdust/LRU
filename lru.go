@@ -27,25 +27,25 @@ func newLru(cap int) *Lru {
 }
 
 func (l *Lru) get(id string) interface{} {
-    index, ok := l.m[id]	
-    if !ok {
-        fmt.Printf("no Value in lru, id: %s \n", id)
-        return nil 
-    }
+	index, ok := l.m[id]	
+	if !ok {
+		fmt.Printf("no Value in lru, id: %s \n", id)
+        	return nil 
+    	}
 
-    // 当前访问的节点
-    currentNode := l.d[index]
+    	// 当前访问的节点
+	currentNode := l.d[index]
 
-    // 将被访问元素前移一位，被访问元素移到队尾
-    length := len(l.d)
-    for i := index; i < length - 1; i++ {
-        l.d[i] = l.d[i+1]
-        l.m[l.d[i].Id] = i
-    }
-    l.d[length-1] = currentNode
-    l.m[id] = length-1
+    	// 将被访问元素前移一位，被访问元素移到队尾
+    	length := len(l.d)
+    	for i := index; i < length - 1; i++ {
+        	l.d[i] = l.d[i+1]
+        	l.m[l.d[i].Id] = i
+    	}
+    	l.d[length-1] = currentNode
+    	l.m[id] = length-1
     
-    return l.d[index].Value  
+    	return l.d[index].Value  
 }
 
 func (l *Lru) put(node *LruNode) {
@@ -57,7 +57,7 @@ func (l *Lru) put(node *LruNode) {
 }
 
 func (l *Lru) addNode(node *LruNode) {
-    id := node.Id 
+    	id := node.Id 
 	l.d = append(l.d, node)
 	length := len(l.d)
 	l.m[id] = length - 1
@@ -72,18 +72,18 @@ func (l *Lru) addNode(node *LruNode) {
 }
 
 func (l *Lru) show() {
-    defer l.mutex.Unlock()
-    l.mutex.Lock()
-    fmt.Println("show data:")
-    for _, value := range l.d {
-        fmt.Printf("%v ", value)
-    }
-    fmt.Println()
+	defer l.mutex.Unlock()
+	l.mutex.Lock()
+	fmt.Println("show data:")
+	for _, value := range l.d {
+		fmt.Printf("%v ", value)
+    	}
+	fmt.Println()
 	fmt.Println("show map:")
-    for key, value := range l.m {
-        fmt.Printf("%v : %v ", key, value)
-    }
-    fmt.Println()
+	for key, value := range l.m {
+        	fmt.Printf("%v : %v ", key, value)
+    	}
+	fmt.Println()
 }
 
 func main() {
